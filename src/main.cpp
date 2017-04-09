@@ -6,43 +6,43 @@ using namespace std;
 
 int main(int argc,char const *argv[]) {
   Map map;
-  Player kry(1,1);
+  Player player(1,1);
   int top;
   int right;
   int bottom;
   int left;
-  map.setBlock(kry.get_X(),kry.get_Y(),2);
+  map.setBlock(player.get_X(),player.get_Y(),2);
   map.draw();
   bool gameloop=true;
   char controller;
   while(gameloop){
 
-    top=map.getBlock(kry.get_X(),kry.get_Y()-1);
-    right=map.getBlock(kry.get_X()+1,kry.get_Y());
-    bottom=map.getBlock(kry.get_X(),kry.get_Y()+1);
-    left=map.getBlock(kry.get_X()-1,kry.get_Y());
+    top=map.getBlock(player.get_X(),player.get_Y()-1);
+    right=map.getBlock(player.get_X()+1,player.get_Y());
+    bottom=map.getBlock(player.get_X(),player.get_Y()+1);
+    left=map.getBlock(player.get_X()-1,player.get_Y());
 
     cin>>controller;
-    map.setBlock(kry.get_X(),kry.get_Y(),0);
+    map.setBlock(player.get_X(),player.get_Y(),0);
     switch(controller){
       case 'z':
         if(top!=1){
-          kry.move_Up();
+          player.move_Up();
         }
         break;
       case 'q':
         if(left!=1){
-          kry.move_Left();
+          player.move_Left();
         }
         break;
       case 's':
         if(bottom!=1){
-          kry.move_Down();
+          player.move_Down();
         }
         break;
       case 'd':
         if(right!=1){
-          kry.move_Right();
+          player.move_Right();
         }
         break;
       case 'x':
@@ -51,7 +51,7 @@ int main(int argc,char const *argv[]) {
       default:
         break;
     }
-    map.setBlock(kry.get_X(),kry.get_Y(),2);
+    map.setBlock(player.get_X(),player.get_Y(),2);
     map.draw();
   }
   return 0;
